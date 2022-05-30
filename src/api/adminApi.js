@@ -16,3 +16,26 @@ export function adminGetInfo(id , token) {
     }
   })
 }
+//传入DTO格式
+// {
+//   "id": 0,
+//   "messageBox": [
+//     "string"
+//   ],
+//   "name": "string",
+//   "passWord": "string",
+//   "pictureURL": "string",
+//   "sex": "string"
+// }
+export function AdminUpdate(DTO,token) {  
+  return request({
+    url: '/admin/updateAdmin/',
+    method: 'put',
+    headers:{
+      "token" : token
+    },
+    
+  
+  })
+}
+
