@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function teacherLogin(id,password) {
   return request({
-    url: '/login/teacherLogin/'+id+'/'+password,
+    url: '/login/TeacherLogin/'+id+'/'+password,
     method: 'get'
   })
 }
@@ -51,8 +51,10 @@ export function TeacherAdd(DTO,token) {
   return request({
     url: '/teacher/addTeacher',
     method: 'post',
+    data: JSON.stringify(DTO),
     headers:{
-      "token" : token
+      "token" : token,
+      'Content-Type': 'application/json',
     }
   })
 }
@@ -62,6 +64,7 @@ export function TeacherDeleteById(id,token) {
     method: 'delete',
     headers:{
       "token" : token
+
     }
   })
 }
@@ -69,8 +72,10 @@ export function TeacherInfoUpdate(DTO,token) {
   return request({
     url: '/teacher/updateTeacher/',
     method: 'put',
+    data: JSON.stringify(DTO),
     headers:{
-      "token" : token
+      "token" : token,
+      'Content-Type': 'application/json',
     }
   })
 }

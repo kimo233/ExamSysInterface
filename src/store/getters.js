@@ -10,6 +10,7 @@ const getters = {
   grade: state => state.user.grade,
   permission_routes: state => state.permission.routes,
   errorLogs: state => state.errorLog.logs,
-  type: state => state.user.type
+  type: state => state.user.type,
+  lec: state => state.user.lec
 }
 export default getters

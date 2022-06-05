@@ -5,7 +5,6 @@ import { teacherLogin,teacherGetInfo } from '@/api/teacherApi'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 import steps from '@/views/guide/steps'
-
 const state = {
   token: '',
   avatar: '',
@@ -18,7 +17,8 @@ const state = {
   sex: '',
   pictureURL: '',
   messageBox: '',
-  type:2,
+  type: 2,
+  lec: [],
 }
 
 const mutations = {
@@ -46,8 +46,11 @@ const mutations = {
   SET_GRADE: (state, grade) => {
     state.grade = grade
   },
-  SET_TYPE: (state, type) =>{
+  SET_TYPE: (state, type) => {
     state.type = type
+  },
+  SET_LEC: (state, lec) => {
+    state.lec = lec
   }
 }
 
@@ -111,6 +114,8 @@ const actions = {
               commit('SET_ACADEMY', response.rspData.academy)
               commit('SET_MAJOR', response.rspData.major)
               commit('SET_GRADE', response.rspData.grade)
+              commit('SET_LEC', response.rspData.lectures)
+              console.log(state.lec)
               resolve()
               
             }).catch(error => {
@@ -133,6 +138,8 @@ const actions = {
             teacherGetInfo(state.id, state.token).then(response => {
       
               commit('SET_NAME', response.rspData.name)
+              commit('SET_LEC', response.rspData.lectures)
+              console.log(state.lec)
               resolve()
               
             }).catch(error => {

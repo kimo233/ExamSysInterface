@@ -1,5 +1,16 @@
 import request from '@/utils/request'
 
+export function questionAdd(DTO,token) {
+  return request({
+    url: '/question/addQuestion/',
+    method: 'post',
+    data: JSON.stringify(DTO),
+    headers:{
+        "token" : token,
+        'Content-Type': 'application/json',
+      }
+  })
+}
 // {
 //     "audioURL": "string",
 //     "correctAnswer": "string",
@@ -10,18 +21,18 @@ import request from '@/utils/request'
 //     "subject": "string",
 //     "type": "string"
 //   }
-export function qusetionUpload(DTO,token) {
+export function questionUpload(DTO,token) {
     return request({
-      url: '/qusetion/addQusetion/',
+      url: '/question/addQuestion/',
       method: 'post',
       headers:{
           "token" : token
         }
     })
   }
-    export function QusetionDeleteById(id,token) {
+    export function QuestionDeleteById(id,token) {
       return request({
-        url: '/qusetion/deleteQusetion/'+id,
+        url: '/question/deleteQuestion/'+id,
         method: 'delete',
         headers:{
           "token" : token
@@ -29,9 +40,9 @@ export function qusetionUpload(DTO,token) {
       })
     }
   
-    export function qusetionGetInfo(id , token) {
+    export function questionGetInfo(id , token) {
       return request({
-        url: '/qusetion/findQusetion/' + id,
+        url: '/question/findQuestion/' + id,
         method: 'get',
         headers:{
           "token" : token
@@ -39,9 +50,9 @@ export function qusetionUpload(DTO,token) {
       })
     }
     
-  export function GetAllQusetionInfo(token) {
+  export function GetAllQuestionInfo(token) {
       return request({
-        url: '/qusetion/findQusetions/' ,
+        url: '/question/findAllQuestion/' ,
         method: 'get',
         headers:{
           "token" : token

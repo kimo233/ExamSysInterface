@@ -88,12 +88,12 @@ export const asyncRoutes = [
     name: 'user',
     meta: {
         title: '用户管理',
-        roles: ['admin', 'teacher'] // 普通的用户角色
+        roles: ['admin'] // 普通的用户角色
     },
     children: [
         {
             path: 'student',
-            component: () => import('@/views/admin/userManageView.vue'),
+            component: () => import('@/views/admin/studentManageView.vue'),
             name: 'studentManage',
             meta: {
                 title: '学生管理',
@@ -102,7 +102,7 @@ export const asyncRoutes = [
         },
         {
           path: 'teacher',
-          component: () => import('@/views/admin/userManageView.vue'),
+          component: () => import('@/views/admin/teacherManageView.vue'),
           name: 'teacherManage',
           meta: {
               title: '老师管理',
@@ -128,21 +128,30 @@ export const asyncRoutes = [
   name: 'class',
   meta: {
       title: '课程管理',
-      roles: ['admin', 'teacher'] // 普通的用户角色
+      roles: ['admin','teacher','student'] // 普通的用户角色
   },
   children: [
       {
           path: 'checkClass',
-          component: () => import('@/views/admin/userManageView.vue'),
+          component: () => import('@/views/admin/class/classManageView.vue'),
           name: 'checkClass',
           meta: {
               title: '查看课程',
-              roles: ['admin', 'teacher']    //  admin角色的用户才能访问该页面
+              roles: ['admin']    //  admin角色的用户才能访问该页面
           }
       },
       {
+        path: 'checkClass1',
+        component: () => import('@/views/teacher/classManageView.vue'),
+        name: 'checkClass1',
+        meta: {
+            title: '查看课程',
+            roles: ['teacher','student']    //  admin角色的用户才能访问该页面
+        }
+    },
+      {
         path: 'addClass',
-        component: () => import('@/views/admin/userManageView.vue'),
+        component: () => import('@/views/admin/class/classAddView.vue'),
         name: 'addClass',
         meta: {
             title: '新建课程',
@@ -173,7 +182,7 @@ export const asyncRoutes = [
       },
       {
         path: 'addTest',
-        component: () => import('@/views/admin/userManageView.vue'),
+        component: () => import('@/views/teacher/testAddView.vue'),
         name: 'addClass',
         meta: {
             title: '新建考试',
@@ -199,21 +208,21 @@ export const asyncRoutes = [
   name: 'quiz',
   meta: {
       title: '题库管理',
-      roles: ['teacher','student'] 
+      roles: ['teacher'] 
   },
   children: [
       {
           path: 'checkQuiz',
-          component: () => import('@/views/admin/userManageView.vue'),
+          component: () => import('@/views/teacher/quizManageView.vue'),
           name: 'checkQuiz',
           meta: {
               title: '查看题库',
-              roles: [ 'teacher','student']    //  admin角色的用户才能访问该页面
+              roles: [ 'teacher']    //  admin角色的用户才能访问该页面
           }
       },
       {
         path: 'addQuiz',
-        component: () => import('@/views/admin/userManageView.vue'),
+        component: () => import('@/views/teacher/quizAddLabel.vue'),
         name: 'addQuiz',
         meta: {
             title: '添加问题',

@@ -41,8 +41,10 @@ export function testUpload(DTO,token) {
   return request({
     url: '/test/addTest/',
     method: 'post',
+    data:JSON.stringify(DTO),
     headers:{
-        "token" : token
+        "token" : token,
+        'Content-Type': 'application/json;charset=UTF-8',
       }
   })
 }

@@ -1,34 +1,18 @@
 import request from '@/utils/request'
 
-export function studentLogin(id,password) {
+export function ClassGetInfo(id , token) {
   return request({
-    url: '/login/StudentLogin/'+id+'/'+password,
-    method: 'get'
-  })
-}
-
-export function studentGetInfo(id , token) {
-  return request({
-    url: '/student/findStudent/' + id,
+    url: '/lecture/findLecture/' + id,
     method: 'get',
     headers:{
       "token" : token
     }
   })
 }
-export function StudentPasswordModify(id,oldpassword,newpassword,token) {
-  return request({
-    url: '/login/StudentPassModify'+id+'/'+oldpassword +'/'+newpassword,
-    method: 'put',
-    headers:{
-      "token" : token
-    }
-  })
-}
 
-export function GetAllStudentsInfo(token) {
+export function GetAllClassInfo(token) {
   return request({
-    url: '/student/findAllStudents/' ,
+    url: '/lecture/findAllLecture/' ,
     method: 'get',
     headers:{
       "token" : token
@@ -49,9 +33,9 @@ export function GetAllStudentsInfo(token) {
 //   "pictureURL": "string",
 //   "sex": "string"
 // }
-export function StudentsInfoUpdate(DTO,token) {
+export function ClassInfoUpdate(DTO,token) {
   return request({
-    url: '/student/updateStudent/' ,
+    url: '/lecture/updateLecture/' ,
     method: 'put',
     data: JSON.stringify(DTO),
     headers:{
@@ -62,9 +46,9 @@ export function StudentsInfoUpdate(DTO,token) {
 }
 
 
-export function StudentAdd(DTO,token) {
+export function ClassAdd(DTO,token) {
   return request({
-    url: '/student/addStudent',
+    url: '/lecture/addLecture',
     method: 'post',
     data: JSON.stringify(DTO),
     headers:{
@@ -73,9 +57,9 @@ export function StudentAdd(DTO,token) {
     }
   })
 }
-export function StudentDeleteById(id,token) {
+export function ClassDeleteById(id,token) {
   return request({
-    url: '/student/deleteStudent/'+id,
+    url: '/lecture/deleteLecture/'+id,
     method: 'delete',
     headers:{
       "token" : token
