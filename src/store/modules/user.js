@@ -115,6 +115,7 @@ const actions = {
               commit('SET_MAJOR', response.rspData.major)
               commit('SET_GRADE', response.rspData.grade)
               commit('SET_LEC', response.rspData.lectures)
+              commit('SET_ID', response.rspData.id)
               console.log(state.lec)
               resolve()
               
@@ -139,6 +140,7 @@ const actions = {
       
               commit('SET_NAME', response.rspData.name)
               commit('SET_LEC', response.rspData.lectures)
+              commit('SET_ID', response.rspData.id)
               console.log(state.lec)
               resolve()
               

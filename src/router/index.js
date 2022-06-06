@@ -108,16 +108,7 @@ export const asyncRoutes = [
               title: '老师管理',
               roles: ['admin']    //  admin角色的用户才能访问该页面
           }
-      },
-      {
-        path: 'admin',
-        component: () => import('@/views/admin/userManageView.vue'),
-        name: 'adminManage',
-        meta: {
-            title: '管理员管理',
-            roles: ['admin']    //  admin角色的用户才能访问该页面
-        }
-    }
+      }
     ]
 },
 {
@@ -173,7 +164,7 @@ export const asyncRoutes = [
   children: [
       {
           path: 'checkTest',
-          component: () => import('@/views/admin/userManageView.vue'),
+          component: () => import('@/views/teacher/testManageView.vue'),
           name: 'checkTest',
           meta: {
               title: '查看考试',

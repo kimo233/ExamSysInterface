@@ -37,20 +37,18 @@
     </el-table-column>
   </el-table>
 
-  <!-- <el-dialog
+  <el-dialog
     title="添加学生"
   :visible.sync="visi"
   width="80%"
   :before-close="handleClose">
-        <el-transfer v-model="studentCurrentList"
-        filterable
-        :filter-method="filterMethod"
-        filter-placeholder="请输入学号" 
+        <el-transfer
+        v-model="studentCurrentList"
         :props="{key: 'id',label: 'name'}"
         :data="studentList">
               <el-button class="transfer-footer" slot="right-footer" size="small">添加</el-button>
         </el-transfer>
-  </el-dialog> -->
+  </el-dialog>
 
     </div>
     

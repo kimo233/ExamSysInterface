@@ -7,7 +7,7 @@
   </el-form-item>
 
     <el-form-item label="课程">
-         <el-select v-model="sizeForm.classId" placeholder="请选择">
+         <el-select v-model="sizeForm.lectureID" placeholder="请选择">
          <el-option
         v-for="item in cla"
       :key="item.id"
@@ -43,7 +43,6 @@ v-model="sizeForm.timeFinish" placeholder="选择结束时间" value-format="yyy
     </div>
 </template>
 <script>
-import {testUpload} from "@/api/testApi"
 import {GetAllClassInfo} from '@/api/classApi'
 import quizListView from "../teacher/quizListView.vue"
 export default {
@@ -55,10 +54,11 @@ export default {
             step:1,
             sizeForm:{
                 id:'',
-                classId:'',
+                lectureID:'',
                 timeBegin:'',
                 timeFinish:'',
                 questionsID:[],
+                teacherId:''
             },
             cla:[],
 
@@ -66,10 +66,10 @@ export default {
     },
     methods:{
         next(){
-            console.log(this.sizeForm.timeBegin)
             this.step=2;
         },
         getClass(){
+            this.sizeForm.teacherId=this.$store.getters.id
             GetAllClassInfo(this.$store.getters.token).then(response =>{
                 this.cla=response.rspData
                 console.log(this.cla)
