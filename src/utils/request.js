@@ -44,7 +44,7 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-    console.log(res.rspCode)
+    console.log(res)
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.rspCode !== '00000') {
@@ -72,7 +72,17 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    // if(error.search('500') !=-1){
+    //   console.log('密码错误')
+    // }
+    if(error.toString().search('500')!=-1){
+      Message({
+        message:"用户名密码错误",
+        type: 'error',
+        duration: 5 * 1000
+      })
+      return Promise.reject(error)
+      }
     Message({
       message: error.message,
       type: 'error',

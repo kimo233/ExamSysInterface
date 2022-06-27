@@ -16,6 +16,12 @@ export function adminGetInfo(id , token) {
     }
   })
 }
+export function adminListener() {
+  return request({
+    url: '/listener/total',
+    method: 'get',
+  })
+}
 //传入DTO格式
 // {
 //   "id": 0,
